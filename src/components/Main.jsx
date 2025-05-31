@@ -1,9 +1,7 @@
-
-
-
+import React from "react";
 
 export default function Main() {
-    const ingredients = ["Chicken", "Oregano", "Tomatoes"]
+    let [ingredients, setIngredients] = React.useState([])
 
     const ingredientsListItems = ingredients.map(ingredient => (
         <li key={ingredient}>{ingredient}</li>
@@ -16,11 +14,12 @@ export default function Main() {
         // create FormData object from form that was submitted
         const formData = new FormData(event.currentTarget);
         // retrieve the input and set as newIngredient
-        const formInputIngredient = formData.get("ingredientCard");
-        console.log(formInputIngredient)
-        ingredients.push(formInputIngredient)
+        const ingredientFromForm = formData.get("ingredientCard");
+        console.log(ingredientFromForm)
+        setIngredients(prevList => [...prevList, ingredientFromForm])
+        
 
-        console.log(ingredients)
+        
         
      
     }
@@ -31,10 +30,11 @@ export default function Main() {
                 <form className="ingredient" onSubmit={handleSubmit}>
                     <input name="ingredientCard" placeholder="e.g. nutmeg" />
                     <button >+ Add an Ingredient</button>
+                    
                 </form>
-
+                
                 <ul>
-                    {/*ingredientsListItems*/}
+                    {ingredientsListItems}
                 </ul>
             </main>
         </>
