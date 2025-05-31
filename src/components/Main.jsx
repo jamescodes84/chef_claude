@@ -7,27 +7,20 @@ export default function Main() {
         <li key={ingredient}>{ingredient}</li>
     ))
 
-    function handleSubmit(event) {
-        // stop form submit from refreshing page
-        event.preventDefault();
-        
-        // create FormData object from form that was submitted
-        const formData = new FormData(event.currentTarget);
-        // retrieve the input and set as newIngredient
-        const ingredientFromForm = formData.get("ingredientCard");
-        console.log(ingredientFromForm)
-        setIngredients(prevList => [...prevList, ingredientFromForm])
-        
 
+
+
+    function handleSubmit(formData) {
         
-        
+        const ingredientFromForm = formData.get("ingredientCard");
+        setIngredients(prevList => [...prevList, ingredientFromForm]) 
      
     }
 
     return (
         <>
             <main>
-                <form className="ingredient" onSubmit={handleSubmit}>
+                <form action={handleSubmit} className="ingredient" >
                     <input name="ingredientCard" placeholder="e.g. nutmeg" />
                     <button >+ Add an Ingredient</button>
                     
