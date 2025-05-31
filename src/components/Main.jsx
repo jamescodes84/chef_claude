@@ -34,7 +34,7 @@ export default function Main() {
                 </form>
 
                 <ul>
-                    {ingredientsListItems}
+                    {/*ingredientsListItems*/}
                 </ul>
             </main>
         </>
