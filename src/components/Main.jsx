@@ -19,7 +19,8 @@ export default function Main() {
     }
 
     function getRecipe() {
-       getRecipeFromChefClaude()
+        // This is where the AI code will be called
+        getRecipeFromChefClaude()
 
     }
 
