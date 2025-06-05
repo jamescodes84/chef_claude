@@ -6,9 +6,7 @@ export default function Main() {
     let [ingredients, setIngredients] = React.useState([])
     let [recipeShown, setRecipeShown] = React.useState(false)
     //console.log("new state")
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
+    
 
     function handleSubmit(formData) {
         
@@ -31,8 +29,8 @@ export default function Main() {
                 </form>
 
                 {   
-                    ingredientsListItems.length > 0 ?
-                    <IngredientList ingredientsList={ingredientsListItems} processRecipe={getRecipe}/>
+                    ingredients.length > 0 ?
+                    <IngredientList ogIngredients={ingredients} processRecipe={getRecipe}/>
                     : null
                 }   
 
