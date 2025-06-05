@@ -1,6 +1,8 @@
 import React from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientList from "./IngredientList";
+//import Anthropic from "@anthropic-ai/sdk"
+import { getRecipeFromChefClaude } from "../../ai";
 
 export default function Main() {
     let [ingredients, setIngredients] = React.useState([])
@@ -17,7 +19,8 @@ export default function Main() {
     }
 
     function getRecipe() {
-       setRecipeShown(prevRecipeShown => !prevRecipeShown)
+       getRecipeFromChefClaude()
+
     }
 
     return (
