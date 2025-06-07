@@ -7,6 +7,7 @@ import { getRecipeFromChefClaude } from "../../ai";
 export default function Main() {
     let [ingredients, setIngredients] = React.useState([])
     let [recipeShown, setRecipeShown] = React.useState(false)
+    let [recipe, setRecipe] = React.useState(null)
     //console.log("new state")
     
 
@@ -18,10 +19,13 @@ export default function Main() {
         }
     }
 
-    function getRecipe() {
+    async function getRecipe() {
         // This is where the AI code will be called
-        getRecipeFromChefClaude()
-
+        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
+        //console.log(recipeMarkdown)
+        setRecipe(recipeMarkdown)
+        setRecipeShown(true)
+        
     }
 
     return (
@@ -40,7 +44,7 @@ export default function Main() {
 
                 {   
                     recipeShown == true &&
-                    <ClaudeRecipe />
+                    <ClaudeRecipe recipeData={recipe}/>
                 }
 
 

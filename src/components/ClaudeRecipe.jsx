@@ -1,6 +1,21 @@
-export default function ClaudeRecipe(){
+import ReactMarkdown from "react-markdown"
+
+export default function ClaudeRecipe({recipeData}){
+    console.log("made it")
+    console.log(recipeData)
     return (
-        <section>
+        
+        <p>
+            <ReactMarkdown>
+                {recipeData}
+            </ReactMarkdown>
+            
+        </p>
+    )
+}
+
+/*
+<section>
                         <h2>Chef Claude Recommends:</h2>
                         <article className="suggested-recipe-container" aria-live="polite">
                             <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
@@ -32,5 +47,4 @@ export default function ClaudeRecipe(){
                             </ol>
                         </article>
                     </section>
-    )
-}
+                    */
