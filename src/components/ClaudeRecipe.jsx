@@ -5,12 +5,12 @@ export default function ClaudeRecipe({recipeData}){
     console.log(recipeData)
     return (
         
-        <p>
+        <section>
             <ReactMarkdown>
                 {recipeData}
             </ReactMarkdown>
             
-        </p>
+        </section>
     )
 }
 

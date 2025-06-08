@@ -2,7 +2,7 @@ import React from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientList from "./IngredientList";
 //import Anthropic from "@anthropic-ai/sdk"
-import { getRecipeFromChefClaude } from "../../ai";
+import { getRecipeFromChefClaude, getRecipeFromMistral } from "../../ai";
 
 export default function Main() {
     let [ingredients, setIngredients] = React.useState([])
@@ -21,7 +21,9 @@ export default function Main() {
 
     async function getRecipe() {
         // This is where the AI code will be called
-        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
+        //const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
+
+        const recipeMarkdown = await getRecipeFromMistral(ingredients)
         //console.log(recipeMarkdown)
         setRecipe(recipeMarkdown)
         setRecipeShown(true)
