@@ -12,7 +12,7 @@ export default function Main() {
     console.log(recipeSection)
     
     //console.log("new state")
-    useEffect(() => {recipeShown && recipeSection.current.scrollIntoView()}, [recipeShown])
+    useEffect(() => {recipeShown && recipeSection.current.scrollIntoView({behavior: "smooth"})}, [recipeShown])
 
     function handleSubmit(formData) {
         
