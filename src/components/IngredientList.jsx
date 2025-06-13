@@ -1,18 +1,18 @@
-export default function IngredientList({ogIngredients, processRecipe, ref}) {
-    const ingredientsListItems = ogIngredients.map(ingredient => (
+export default function IngredientList(props) {
+    const ingredientsListItems = props.ogIngredients.map(ingredient => (
         <li key={ingredient}>{ingredient}</li>
     ))
     return (
         <section>
             <h2>Ingredients on hand:</h2>
             <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
-            {   ogIngredients.length > 3 &&
+            {   props.ogIngredients.length > 3 &&
                 <div className="get-recipe-container">
-                    <div ref={ref}>
+                    <div ref={props.ref}>
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button onClick={processRecipe}>Get a recipe</button>
+                    <button onClick={props.processRecipe}>Get a recipe</button>
                 </div>
             }
         </section>

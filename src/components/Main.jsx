@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientList from "./IngredientList";
 //import Anthropic from "@anthropic-ai/sdk"
@@ -10,8 +10,9 @@ export default function Main() {
     let [recipe, setRecipe] = React.useState(null)
     const recipeSection = React.useRef(null)
     console.log(recipeSection)
-    //console.log("new state")
     
+    //console.log("new state")
+    useEffect(() => {recipeShown && recipeSection.current.scrollIntoView()}, [recipeShown])
 
     function handleSubmit(formData) {
         
