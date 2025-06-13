@@ -8,6 +8,8 @@ export default function Main() {
     let [ingredients, setIngredients] = React.useState([])
     let [recipeShown, setRecipeShown] = React.useState(false)
     let [recipe, setRecipe] = React.useState(null)
+    const recipeSection = React.useRef(null)
+    console.log(recipeSection)
     //console.log("new state")
     
 
@@ -23,7 +25,7 @@ export default function Main() {
         // This is where the AI code will be called
         //const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
 
-        const recipeMarkdown = await getRecipeFromMistral(ingredients)
+        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
         //console.log(recipeMarkdown)
         setRecipe(recipeMarkdown)
         setRecipeShown(true)
@@ -34,13 +36,16 @@ export default function Main() {
         <>
             <main>
                 <form action={handleSubmit} className="ingredient" >
-                    <input name="ingredientCard" placeholder="e.g. nutmeg" />
+                    <input 
+                        name="ingredientCard" 
+                        placeholder="e.g. nutmeg" 
+                    />
                     <button >+ Add an Ingredient</button>
                 </form>
 
                 {   
                     ingredients.length > 0 ?
-                    <IngredientList ogIngredients={ingredients} processRecipe={getRecipe}/>
+                    <IngredientList ref={recipeSection} ogIngredients={ingredients} processRecipe={getRecipe}/>
                     : null
                 }   
 

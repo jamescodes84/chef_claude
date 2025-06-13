@@ -1,4 +1,4 @@
-export default function IngredientList({ogIngredients, processRecipe}) {
+export default function IngredientList({ogIngredients, processRecipe, ref}) {
     const ingredientsListItems = ogIngredients.map(ingredient => (
         <li key={ingredient}>{ingredient}</li>
     ))
@@ -8,7 +8,7 @@ export default function IngredientList({ogIngredients, processRecipe}) {
             <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
             {   ogIngredients.length > 3 &&
                 <div className="get-recipe-container">
-                    <div>
+                    <div ref={ref}>
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients.</p>
                     </div>
